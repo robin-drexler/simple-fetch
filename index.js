@@ -11,6 +11,6 @@ module.exports = function (httpString) {
     headers: requestHeaders,
     body
   });
-    
+
   return fetch(request);
 };

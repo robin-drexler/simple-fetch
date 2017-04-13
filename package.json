@@ -1,5 +1,7 @@
 {
   "name": "simple-fetch",
+  "description": "Easy way to construct simple http fetch requests",
+  "author": "Robin Drexler",
   "version": "0.1.0",
   "main": "index.js",
   "license": "MIT",

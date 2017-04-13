@@ -1,40 +1,16 @@
 const extractData = require('./extractData');
 const fetch = require('isomorphic-fetch');
 
+module.exports = function (httpString) {
+  const {headers, body, method, url} = extractData(httpString);
+  const requestHeaders = new Headers();
+  headers.forEach(header => requestHeaders.append(header.key, header.value));
 
-// const result = extractData(`
-//   POST https://httpbin.org/post
-//   Cache-Control: lolol
-//
-// '{
-//       "scripts": {
-//     "test": "   jest"
-//   }
-// }'
-//
-// `);
-
-
-const result = extractData(`GET https://httpbin.org/headers
-Foo: bar
-
-`);
-
-
-const {headers, body, method, url} = result;
-const myHeaders = new Headers();
-headers.forEach(header => myHeaders.append(header.key, header.value));
-
-const myInit = {
-  method,
-  headers: myHeaders,
-  body
+  const request = new Request(url, {
+    method,
+    headers: requestHeaders,
+    body
+  });
+    
+  return fetch(request);
 };
-
-const request = new Request(url, myInit);
-
-
-fetch(request).then(r => r.text())
-  .then((text) => console.log(text))
-
-console.log(result)

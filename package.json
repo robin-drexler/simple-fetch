@@ -1,0 +1,16 @@
+{
+  "name": "tagged-http",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^19.0.2"
+  },
+  "dependencies": {
+    "fetch": "^1.1.0",
+    "isomorphic-fetch": "^2.2.1"
+  }
+}

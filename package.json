@@ -4,6 +4,10 @@
   "author": "Robin Drexler",
   "version": "0.1.0",
   "main": "index.js",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/robin-drexler/simple-fetch.git"
+  },
   "license": "MIT",
   "scripts": {
     "test": "jest"

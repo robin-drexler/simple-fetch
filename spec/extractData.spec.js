@@ -7,9 +7,33 @@ describe('extract data', () => {
     expect(result.url).toEqual('http://google.com');
   });
 
+  test('defaults to GET, when no method is given', () => {
+    const result = extractData(`http://google.com`);
+    expect(result.method).toEqual('GET');
+    expect(result.url).toEqual('http://google.com');
+  });
+
   test('extracts headers with body present', () => {
     const result = extractData(`
     GET http://google.com
+    Cookie: foo
+    X-Foo: bar
+    
+    body1
+`);
+
+    const [cookie, foo] = result.headers;
+    expect(cookie.key).toEqual('Cookie');
+    expect(cookie.value).toEqual('foo');
+
+    expect(foo.key).toEqual('X-Foo');
+    expect(foo.value).toEqual('bar');
+
+  });
+
+  test('extracts data when method is missig', () => {
+    const result = extractData(`
+    http://google.com
     Cookie: foo
     X-Foo: bar
     

@@ -4,9 +4,9 @@
   "author": "Robin Drexler",
   "version": "0.1.0",
   "main": "index.js",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/robin-drexler/simple-fetch.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robin-drexler/simple-fetch.git"
   },
   "license": "MIT",
   "scripts": {
@@ -18,5 +18,9 @@
   "dependencies": {
     "fetch": "^1.1.0",
     "isomorphic-fetch": "^2.2.1"
-  }
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "engineStrict": true
 }

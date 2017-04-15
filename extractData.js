@@ -1,9 +1,23 @@
+function getMethodAndUrlFromRequestLine(requestLine) {
+  if (requestLine.length === 1) {
+    return {
+      method: 'GET',
+      url: requestLine[0]
+    }
+  }
+
+  return {
+    method: requestLine[0],
+    url: requestLine[1]
+  }
+}
+
 module.exports = function (string) {
   string = string.trim();
   let split = string.split("\n");
   const requestLine = split.shift().split(' ');
-  const method = requestLine[0];
-  const url = requestLine[1];
+
+  const { method, url } = getMethodAndUrlFromRequestLine(requestLine);
 
   let body = '';
   let headers = [];

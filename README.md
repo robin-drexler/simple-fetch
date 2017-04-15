@@ -64,6 +64,17 @@ plainFetch(`
 
 ```
 
+Omitting the method will default to GET requests.
+
+```js
+const plainFetch = require('plain-fetch');
+
+plainFetch(`https://query.yahooapis.com/v1/public/yql?q=select%20wind%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22chicago%2C%20il%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`)
+.then(res => res.json())
+.then(data => console.log(data.query.results.channel.wind))
+
+```
+
 
 ## Install
 
